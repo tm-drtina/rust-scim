@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "scim-client",
+    "scim-protocol",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Tomas Drtina <tm.drtina@gmail.com>"]

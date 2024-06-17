@@ -1,5 +1,5 @@
-use rust_scim::common::{Common, Meta};
-use rust_scim::resource::schema::{
+use scim_protocol::protocol::Meta;
+use scim_protocol::resource::schema::{
     Schema, SchemaAttribute, SchemaAttributeMutability, SchemaAttributeReturned,
     SchemaAttributeType, SchemaAttributeUniqueness,
 };
@@ -14,18 +14,15 @@ fn test() {
 fn expected() -> Vec<Schema> {
     vec![
         Schema {
-            common: Common {
-                id: "urn:ietf:params:scim:schemas:core:2.0:User".to_string(),
-                external_id: None,
-                meta: Meta {
-                    resource_type: Some("Schema".to_string()),
-                    created: None,
-                    last_modified: None,
-                    location: Some(
-                        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User".to_string(),
-                    ),
-                    version: None,
-                },
+            id: "urn:ietf:params:scim:schemas:core:2.0:User".to_string(),
+            meta: Meta {
+                resource_type: Some("Schema".to_string()),
+                created: None,
+                last_modified: None,
+                location: Some(
+                    "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User".to_string(),
+                ),
+                version: None,
             },
             name: Some("User".to_string()),
             description: Some("User Account".to_string()),
@@ -1040,18 +1037,15 @@ fn expected() -> Vec<Schema> {
             ],
         },
         Schema {
-            common: Common {
-                id: "urn:ietf:params:scim:schemas:core:2.0:Group".to_string(),
-                external_id: None,
-                meta: Meta {
-                    resource_type: Some("Schema".to_string()),
-                    created: None,
-                    last_modified: None,
-                    location: Some(
-                        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group".to_string(),
-                    ),
-                    version: None,
-                },
+            id: "urn:ietf:params:scim:schemas:core:2.0:Group".to_string(),
+            meta: Meta {
+                resource_type: Some("Schema".to_string()),
+                created: None,
+                last_modified: None,
+                location: Some(
+                    "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group".to_string(),
+                ),
+                version: None,
             },
             name: Some("Group".to_string()),
             description: Some("Group".to_string()),
@@ -1128,19 +1122,16 @@ fn expected() -> Vec<Schema> {
             ],
         },
         Schema {
-            common: Common {
-                id: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User".to_string(),
-                external_id: None,
-                meta: Meta {
-                    resource_type: Some("Schema".to_string()),
-                    created: None,
-                    last_modified: None,
-                    location: Some(
-                        "/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-                            .to_string(),
-                    ),
-                    version: None,
-                },
+            id: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User".to_string(),
+            meta: Meta {
+                resource_type: Some("Schema".to_string()),
+                created: None,
+                last_modified: None,
+                location: Some(
+                    "/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                        .to_string(),
+                ),
+                version: None,
             },
             name: Some("EnterpriseUser".to_string()),
             description: Some("Enterprise User".to_string()),

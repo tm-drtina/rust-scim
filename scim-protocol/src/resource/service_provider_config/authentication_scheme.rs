@@ -1,6 +1,4 @@
-use serde::Deserialize;
-
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct AuthenticationScheme {
     /// The authentication scheme.
@@ -32,7 +30,7 @@ pub struct AuthenticationScheme {
     pub primary: bool,
 }
 
-#[derive(Debug, Clone, Copy, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum AuthenticationSchemeType {
     OAuth,

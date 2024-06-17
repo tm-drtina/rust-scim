@@ -1,5 +1,5 @@
-use scim_protocol::endpoint::UsersEndpoint;
-use scim_protocol::protocol::{Meta, NoExtensions, ScimEndpoint, UserResponse};
+use scim_protocol::endpoint::{UserResponse, UsersEndpoint};
+use scim_protocol::protocol::{Meta, NoExtensions, ScimEndpoint};
 use scim_protocol::resource::user::{
     Address, Email, GroupMembership, InstantMessaging, Name, PhoneNumber, Photo, User,
     X509Certificate,

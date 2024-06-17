@@ -1,5 +1,5 @@
-use rust_scim::common::Meta;
-use rust_scim::resource::service_provider_config::{
+use scim_protocol::protocol::Meta;
+use scim_protocol::resource::service_provider_config::{
     AuthenticationScheme, AuthenticationSchemeType, BulkConfig, ChangePasswordConfig, ETagConfig,
     FilterConfig, PatchConfig, ServiceProviderConfig, SortConfig,
 };

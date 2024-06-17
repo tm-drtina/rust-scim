@@ -1,10 +1,8 @@
-use serde::Deserialize;
-
 /// A single keyword value that specifies how the service provider enforces uniqueness of attribute values.
 /// A server MAY reject an invalid value based on uniqueness by returning HTTP response code 400 (Bad Request).
 /// A client MAY enforce uniqueness on the client side to a greater degree than the service provider enforces.
 /// For example, a client could make a value unique while the server has uniqueness of "none".
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum SchemaAttributeUniqueness {
     /// The values are not intended to be unique in any way.

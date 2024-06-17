@@ -1,6 +1,4 @@
-use serde::Deserialize;
-
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct PatchConfig {
     /// A Boolean value specifying whether or not the operation is supported.

@@ -1,7 +1,5 @@
-use serde::Deserialize;
-
 /// A single keyword that indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum SchemaAttributeReturned {
     /// The attribute is always returned, regardless of the contents of the "attributes" parameter.

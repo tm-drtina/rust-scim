@@ -1,10 +1,8 @@
-use serde::{Deserialize, Serialize};
-
 use super::Manager;
 
 /// The following SCIM extension defines attributes commonly used in representing users that belong to, or act on behalf of, a business or enterprise.
 /// The enterprise User extension is identified using the following schema URI: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User".
-#[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EnterpriseUser {
     /// A string identifier, typically numeric or alphanumeric, assigned to a person, typically based on order of hire or association with an organization.

@@ -1,10 +1,8 @@
-use serde::Deserialize;
-
 use crate::protocol::Meta;
 
 use super::SchemaAttribute;
 
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Schema {
     /// The unique URI of the schema.

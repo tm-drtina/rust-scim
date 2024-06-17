@@ -555,6 +555,7 @@ dependencies = [
  "reqwest",
  "scim-protocol",
  "serde",
+ "serde_json",
  "thiserror",
  "tokio",
 ]

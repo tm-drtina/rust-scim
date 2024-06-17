@@ -1,5 +1,3 @@
-use serde::Deserialize;
-
 use super::SchemaExtension;
 use crate::protocol::Meta;
 
@@ -7,7 +5,7 @@ use crate::protocol::Meta;
 /// Resource type resources are READ-ONLY and identified using the following schema URI: "urn:ietf:params:scim:schemas:core:2.0:ResourceType".
 /// Unlike other core resources, all attributes are REQUIRED unless otherwise specified.
 /// The "id" attribute is not required for the resource type resource.
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ResourceType {
     pub schemas: Vec<String>,

@@ -1,8 +1,6 @@
-use serde::{Deserialize, Serialize};
-
 /// The user's manager.
 /// A complex type that optionally allows service providers to represent organizational hierarchy by referencing the "id" attribute of another User.
-#[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Manager {
     /// The "id" of the SCIM resource representing the user's manager.

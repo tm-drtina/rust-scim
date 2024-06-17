@@ -1,12 +1,10 @@
-use serde::{Deserialize, Serialize};
-
 use super::Member;
 
 /// SCIM provides a schema for representing groups, identified using the following schema URI: "urn:ietf:params:scim:schemas:core:2.0:Group".
 ///
 /// "Group" resources are meant to enable expression of common group-based or role-based access control models, although no explicit authorization model is defined.
 /// It is intended that the semantics of group membership, and any behavior or authorization granted as a result of membership, are defined by the service provider; these are considered out of scope for this specification.
-#[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Group {
     // The following singular attribute is defined in addition to the common attributes defined in the SCIM core schema:

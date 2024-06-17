@@ -1,16 +1,13 @@
-use crate::protocol::{NoExtensions, ScimEndpoint};
+use crate::protocol::NoExtensions;
 use crate::resource::group::Group;
 
-// TODO: derive request and response here
-/*
-pub struct GroupsEndpoint;
-impl ScimEndpoint for GroupsEndpoint {
-    const ENDPOINT: &'static str = "/Groups";
+use crate::generate_endpoint;
 
-    type Resource = Group;
-    type Extensions = NoExtensions;
-
-    type Request = ;
-    type Response = todo!();
-}
-*/
+generate_endpoint!(
+    path = "/Groups",
+    endpoint_type = GroupsEndpoint,
+    request = GroupRequest,
+    response = GroupResponse,
+    resource = Group,
+    extensions = NoExtensions,
+);

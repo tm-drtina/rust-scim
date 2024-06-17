@@ -1,5 +1,3 @@
-use serde::Deserialize;
-
 use crate::protocol::Meta;
 
 use super::{
@@ -11,7 +9,7 @@ use super::{
 /// The service provider configuration resource enables a service provider to discover SCIM specification features in a standardized form as well as provide additional implementation details to clients.
 /// All attributes have a mutability of "readOnly".
 /// Unlike other core resources, the "id" attribute is not required for the service provider configuration resource.
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ServiceProviderConfig {
     /// Must be singleton list of ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"]

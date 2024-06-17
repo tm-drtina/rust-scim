@@ -1,15 +1,19 @@
+use crate::directory_scimple::users_endpoint::{LuckyNumber, UserExtensions};
+
+use super::users_endpoint::{UserRequest, UsersEndpoint};
+
 use super::scim_client;
 use reqwest::StatusCode;
 use scim_client::error::ScimError;
-use scim_protocol::endpoint::UsersEndpoint;
-use scim_protocol::protocol::{NoExtensions, ScimRequest, UserRequest};
+use scim_protocol::protocol::ScimRequest;
+use scim_protocol::resource::enterprise_user::{EnterpriseUser, Manager};
 use scim_protocol::resource::user::User;
 
 #[cfg(test)]
 use pretty_assertions::assert_eq;
 
 #[tokio::test(flavor = "current_thread")]
-async fn user_works() {
+async fn fetchall_works() {
     let client = scim_client();
 
     let user = client.get_all::<UsersEndpoint>().await.unwrap();
@@ -50,13 +54,32 @@ async fn create_delete() {
         u
     };
 
-    let req = UserRequest::from_parts(None, user, NoExtensions);
+    let extensions = UserExtensions {
+        enterprise_user: EnterpriseUser {
+            employee_number: Some("abc123".to_string()),
+            cost_center: None,
+            organization: Some("ACME org".to_string()),
+            division: Some("IT".to_string()),
+            department: Some("IT Support".to_string()),
+            manager: Some(Manager {
+                value: Some("Big Boss".to_string()),
+                reference: None,
+                display_name: None,
+            }),
+        },
+        lucky_number: LuckyNumber { lucky_number: 42 },
+    };
+    let expected_extensions = extensions.clone();
+
+    let req = UserRequest::from_parts(None, user, extensions);
 
     let created_user = client.create::<UsersEndpoint>(&req).await.unwrap();
     assert_eq!(expected_user, created_user.resource);
+    assert_eq!(expected_extensions, created_user.extensions);
 
     let fetched_user = client.get::<UsersEndpoint>(&created_user.id).await.unwrap();
     assert_eq!(expected_user, fetched_user.resource);
+    assert_eq!(expected_extensions, fetched_user.extensions);
 
     client.delete::<UsersEndpoint>(&created_user).await.unwrap();
 

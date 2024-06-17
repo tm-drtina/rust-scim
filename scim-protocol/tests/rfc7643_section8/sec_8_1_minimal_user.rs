@@ -1,4 +1,5 @@
-use scim_protocol::protocol::{Meta, NoExtensions, UserResponse};
+use scim_protocol::endpoint::UserResponse;
+use scim_protocol::protocol::{Meta, NoExtensions};
 use scim_protocol::resource::user::User;
 
 #[test]

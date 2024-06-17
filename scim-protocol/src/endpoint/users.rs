@@ -1,16 +1,33 @@
-use crate::protocol::{NoExtensions, ScimEndpoint, UserRequest, UserResponse};
+use crate::generate_endpoint;
+use crate::protocol::{Extensions, NoExtensions};
+use crate::resource::enterprise_user::EnterpriseUser;
 use crate::resource::user::User;
+use crate::resource::ScimSchema;
 
-// TODO: derive request and response here
+generate_endpoint!(
+    path = "/Users",
+    endpoint_type = UsersEndpoint,
+    request = UserRequest,
+    response = UserResponse,
+    resource = User,
+    extensions = NoExtensions,
+);
 
-pub struct UsersEndpoint;
-impl ScimEndpoint for UsersEndpoint {
-    const ENDPOINT: &'static str = "/Users";
+generate_endpoint!(
+    path = "/Users",
+    endpoint_type = EnterpriseUsersEndpoint,
+    request = EnterpriseUserRequest,
+    response = EnterpriseUserResponse,
+    resource = User,
+    extensions = EnterpriseUserExtensions,
+);
 
-    type Resource = User;
-    type Extensions = NoExtensions;
-
-    type Request = UserRequest;
-    type Response = UserResponse;
+// TODO: generate even this
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+pub struct EnterpriseUserExtensions {
+    #[serde(rename = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")]
+    pub enterprise_user: EnterpriseUser,
 }
-
+impl Extensions for EnterpriseUserExtensions {
+    const SCHEMA: &'static [&'static str] = &[EnterpriseUser::SCHEMA];
+}

@@ -1,7 +1,5 @@
-use serde::Deserialize;
-
 /// A single keyword indicating the circumstances under which the value of the attribute can be (re)defined
-#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum SchemaAttributeMutability {
     /// The attribute SHALL NOT be modified.

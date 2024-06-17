@@ -1,5 +1,6 @@
+mod generate;
 mod groups;
 mod users;
 
-// pub use groups::GroupsEndpoint;
-pub use users::UsersEndpoint;
+pub use groups::*;
+pub use users::*;

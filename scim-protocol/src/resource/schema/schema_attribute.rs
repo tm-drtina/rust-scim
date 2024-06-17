@@ -6,7 +6,7 @@ use super::{
 };
 
 // TODO: Handle case-insensitive values: Unless otherwise specified, all schema attributes are case insensitive.
-#[derive(Debug, Clone, serde::Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(try_from = "SchemaAttributeScimFormat")]
 pub struct SchemaAttribute {
     /// The attribute's name.

@@ -1,3 +1,5 @@
+/// Taken from serde's implementation of `flatten`, which is private/not part of public API.
+
 use std::fmt::{self, Display};
 
 use serde::ser::{self, Impossible, SerializeMap};

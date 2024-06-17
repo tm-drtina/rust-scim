@@ -1,13 +1,9 @@
 use super::scim_client;
-use rust_scim::error::Result;
-use rust_scim::resource::schema::Schema;
 
 #[tokio::test(flavor = "current_thread")]
-async fn schema_works() -> Result<()> {
+async fn schema_works() {
     let client = scim_client();
 
-    let schemas = client.get_all::<Schema>().await?;
+    let schemas = client.get_schemas().await.unwrap();
     eprintln!("{schemas:?}");
-
-    Ok(())
 }

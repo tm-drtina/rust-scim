@@ -1,7 +1,7 @@
 mod groups;
-//mod resource_type;
-//mod schema;
-//mod service_provider_config;
+mod resource_type;
+mod schema;
+mod service_provider_config;
 mod users;
 
 mod users_endpoint;

@@ -1,5 +1,8 @@
 use reqwest::{Client, StatusCode};
 use scim_protocol::protocol::{ListResponse, ScimEndpoint, ScimResponse as _};
+use scim_protocol::resource::resource_type::{self, ResourceType};
+use scim_protocol::resource::schema::{self, Schema};
+use scim_protocol::resource::service_provider_config::{self, ServiceProviderConfig};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
@@ -79,6 +82,43 @@ impl ScimClient {
             .error_for_status()?;
 
         response.json().await.map_err(Into::into)
+    }
+
+    pub async fn get_service_provider_config(&self) -> Result<ServiceProviderConfig> {
+        self.http_client
+            .get(format!(
+                "{}{}",
+                &self.config.base_url,
+                service_provider_config::ENDPOINT
+            ))
+            .send()
+            .await?
+            .error_for_status()?
+            .json()
+            .await
+            .map_err(Into::into)
+    }
+
+    pub async fn get_schemas(&self) -> Result<ListResponse<Schema>> {
+        self.http_client
+            .get(format!("{}{}", &self.config.base_url, schema::ENDPOINT))
+            .send()
+            .await?
+            .error_for_status()?
+            .json()
+            .await
+            .map_err(Into::into)
+    }
+
+    pub async fn get_resource_types(&self) -> Result<ListResponse<ResourceType>> {
+        self.http_client
+            .get(format!("{}{}", &self.config.base_url, resource_type::ENDPOINT))
+            .send()
+            .await?
+            .error_for_status()?
+            .json()
+            .await
+            .map_err(Into::into)
     }
 
     pub async fn create<T>(&self, item: &T::Request) -> Result<T::Response>

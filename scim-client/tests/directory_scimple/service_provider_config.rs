@@ -1,13 +1,9 @@
 use super::scim_client;
-use rust_scim::error::Result;
-use rust_scim::resource::service_provider_config::ServiceProviderConfig;
 
 #[tokio::test(flavor = "current_thread")]
-async fn sp_config_works() -> Result<()> {
+async fn sp_config_works() {
     let client = scim_client();
 
-    let service_provider_config = client.get_single::<ServiceProviderConfig>().await?;
+    let service_provider_config = client.get_service_provider_config().await.unwrap();
     eprintln!("{service_provider_config:?}");
-
-    Ok(())
 }

@@ -1,8 +1,7 @@
-use scim_protocol::generate_endpoint;
-use scim_protocol::protocol::Extensions;
 use scim_protocol::resource::enterprise_user::EnterpriseUser;
 use scim_protocol::resource::user::User;
 use scim_protocol::resource::ScimSchema;
+use scim_protocol::{generate_endpoint, generate_extension};
 
 generate_endpoint!(
     path = "/Users",
@@ -13,17 +12,12 @@ generate_endpoint!(
     extensions = UserExtensions,
 );
 
-// TODO: generate even this
-#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
-pub struct UserExtensions {
-    #[serde(rename = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")]
-    pub enterprise_user: EnterpriseUser,
-    #[serde(rename = "urn:mem:params:scim:schemas:extension:LuckyNumberExtension")]
-    pub lucky_number: LuckyNumber,
-}
-impl Extensions for UserExtensions {
-    const SCHEMA: &'static [&'static str] = &[EnterpriseUser::SCHEMA, LuckyNumber::SCHEMA];
-}
+generate_extension!(
+    extension UserExtensions {
+        enterprise_user: EnterpriseUser,
+        lucky_number: LuckyNumber,
+    }
+);
 
 #[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
 #[serde(rename_all = "camelCase")]

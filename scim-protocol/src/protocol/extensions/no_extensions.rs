@@ -1,11 +1,8 @@
 use std::fmt::{self, Formatter};
 
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-use serde_json::Value;
 
-pub trait Extensions {
-    const SCHEMA: &'static [&'static str];
-}
+use crate::protocol::Extensions;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct NoExtensions;
@@ -32,7 +29,10 @@ impl<'de> Deserialize<'de> for NoExtensions {
             where
                 A: serde::de::MapAccess<'de>,
             {
-                if map.next_entry::<Value, Value>()?.is_some() {
+                if map
+                    .next_entry::<serde::de::IgnoredAny, serde::de::IgnoredAny>()?
+                    .is_some()
+                {
                     Err(serde::de::Error::custom(
                         "Unexpected data, NoExtenstions struct has no data",
                     ))

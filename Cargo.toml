@@ -8,3 +8,11 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 authors = ["Tomas Drtina <tm.drtina@gmail.com>"]
+
+[workspace.lints.clippy]
+pedantic = "warn"
+module-name-repetitions = "allow"
+module_inception = "allow"
+
+# These should be removed when proper docs are added
+missing_errors_doc = "allow"

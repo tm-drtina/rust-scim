@@ -17,10 +17,5 @@ thiserror = "1.0.43"
 pretty_assertions = "1.4.0"
 tokio = { version = "1", features = ["rt", "macros"] }
 
-[lints.clippy]
-pedantic = "warn"
-module-name-repetitions = "allow"
-module_inception = "allow"
-
-# These should be removed when proper docs are added
-missing_errors_doc = "allow"
+[lints]
+workspace = true

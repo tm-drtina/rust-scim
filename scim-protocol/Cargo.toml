@@ -13,10 +13,5 @@ serde_json = "1.0.99"
 [dev-dependencies]
 pretty_assertions = "1.4.0"
 
-[lints.clippy]
-pedantic = "warn"
-module-name-repetitions = "allow"
-module_inception = "allow"
-
-# These should be removed when proper docs are added
-missing_errors_doc = "allow"
+[lints]
+workspace = true

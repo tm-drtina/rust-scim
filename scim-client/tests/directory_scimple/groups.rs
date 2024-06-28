@@ -1,4 +1,3 @@
-
 use scim_protocol::endpoint::GroupsEndpoint;
 
 use super::scim_client;

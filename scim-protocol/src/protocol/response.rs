@@ -1,7 +1,7 @@
+mod generate;
 mod generate_deserialize;
 mod generate_serialize;
 mod generate_struct;
-mod generate;
 
 use std::collections::BTreeSet;
 use std::iter::once;
@@ -63,4 +63,3 @@ pub trait ScimResponse {
         }
     }
 }
-

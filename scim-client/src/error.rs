@@ -21,7 +21,7 @@ pub enum ScimError {
     Unknown,
 }
 
-impl <'a> From<SchemaMismatch<'a>> for ScimError {
+impl<'a> From<SchemaMismatch<'a>> for ScimError {
     fn from(value: SchemaMismatch) -> Self {
         ScimError::SchemaMismatch {
             missing: value.missing.into_iter().map(String::from).collect(),

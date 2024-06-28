@@ -112,7 +112,11 @@ impl ScimClient {
 
     pub async fn get_resource_types(&self) -> Result<ListResponse<ResourceType>> {
         self.http_client
-            .get(format!("{}{}", &self.config.base_url, resource_type::ENDPOINT))
+            .get(format!(
+                "{}{}",
+                &self.config.base_url,
+                resource_type::ENDPOINT
+            ))
             .send()
             .await?
             .error_for_status()?

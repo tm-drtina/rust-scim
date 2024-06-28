@@ -29,10 +29,13 @@ impl<'de> Deserialize<'de> for NoExtensions {
                 Ok(NoExtensions)
             }
             fn visit_map<A>(self, mut map: A) -> Result<Self::Value, A::Error>
-                where
-                    A: serde::de::MapAccess<'de>, {
+            where
+                A: serde::de::MapAccess<'de>,
+            {
                 if let Some(_) = map.next_entry::<Value, Value>()? {
-                    Err(serde::de::Error::custom("Unexpected data, NoExtenstions struct has no data"))
+                    Err(serde::de::Error::custom(
+                        "Unexpected data, NoExtenstions struct has no data",
+                    ))
                 } else {
                     Ok(NoExtensions)
                 }

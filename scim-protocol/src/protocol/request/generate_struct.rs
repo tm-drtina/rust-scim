@@ -1,6 +1,6 @@
 #[macro_export]
 macro_rules! generate_request_struct {
-    ($req:ident, $resource:ty, $extensions:ty) => {        
+    ($req:ident, $resource:ty, $extensions:ty) => {
         pub struct $req {
             /// A String that is an identifier for the resource as defined by the provisioning client.
             /// The "externalId" may simplify identification of a resource between the provisioning client and the service provider by allowing the client to use a filter to locate the resource with an identifier from the provisioning domain, obviating the need to store a local mapping between the provisioning domain's identifier of the resource and the identifier used by the service provider.

@@ -4,6 +4,7 @@ edition = "2021"
 
 version.workspace = true
 authors.workspace = true
+rust-version.workspace = true
 
 [dependencies]
 scim-protocol = { path = "../scim-protocol" }

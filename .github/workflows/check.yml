@@ -115,7 +115,8 @@ jobs:
     # https://docs.github.com/en/actions/learn-github-actions/contexts#context-availability
     strategy:
       matrix:
-        msrv: ["1.56.1"] # 2021 edition requires 1.56
+        # https://github.com/rust-lang/rust/issues/91611
+        msrv: ["1.75.0"]
     name: ubuntu / ${{ matrix.msrv }}
     steps:
       - uses: actions/checkout@v4

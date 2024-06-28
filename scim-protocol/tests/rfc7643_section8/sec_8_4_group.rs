@@ -47,6 +47,6 @@ fn expected() -> GroupResponse {
                 },
             ],
         },
-        extensions: NoExtensions,
+        extensions: NoExtensions {},
     }
 }

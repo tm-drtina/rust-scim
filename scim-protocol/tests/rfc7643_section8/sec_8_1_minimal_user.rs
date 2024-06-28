@@ -12,7 +12,7 @@ fn test_response() {
         external_id: None,
         meta: meta(),
         resource: user(),
-        extensions: NoExtensions,
+        extensions: NoExtensions {},
     };
     assert_eq!(expected, actual);
 }

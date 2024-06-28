@@ -1,8 +1,11 @@
 mod generate;
-mod no_extensions;
 
-pub use no_extensions::NoExtensions;
+use crate::generate_extension;
 
 pub trait Extensions {
     const SCHEMA: &'static [&'static str];
 }
+
+generate_extension!(
+    extension NoExtensions {}
+);

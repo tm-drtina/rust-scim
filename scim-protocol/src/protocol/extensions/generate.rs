@@ -1,17 +1,17 @@
 #[macro_export]
 macro_rules! generate_extension {
     (extension $name:ident {
-        $($var:ident: $type:ty),+
+        $($var:ident: $type:ty),*
         $(,)?
     }) => {
         #[derive(Debug, Clone, PartialEq, Eq)]
         pub struct $name {
-            $(pub $var: $type),+
+            $(pub $var: $type),*
         }
         impl $crate::protocol::Extensions for $name {
             const SCHEMA: &'static [&'static str] = &[$(
                 <$type as $crate::resource::ScimSchema>::SCHEMA
-            ),+];
+            ),*];
         }
 
         impl<'de> serde::Deserialize<'de> for $name {
@@ -21,7 +21,7 @@ macro_rules! generate_extension {
             {
                 #[allow(non_camel_case_types)]
                 enum Field {
-                    $($var),+
+                    $($var),*
                     // Ignore,
                 }
                 #[doc(hidden)]
@@ -39,7 +39,7 @@ macro_rules! generate_extension {
                             // TODO: should this be case insensitive check?
                             $(<$type as $crate::resource::ScimSchema>::SCHEMA => {
                                 Ok(Field::$var)
-                            })+
+                            })*
                             _ => {
                                 return Err(E::unknown_field(value, FIELDS));
                             }
@@ -54,7 +54,7 @@ macro_rules! generate_extension {
                             // TODO: should this be case insensitive check?
                             $(_ if value == <$type as $crate::resource::ScimSchema>::SCHEMA.as_bytes() => {
                                 Ok(Field::$var)
-                            })+
+                            })*
                             _ => {
                                 return Err(E::unknown_field(&String::from_utf8_lossy(value), FIELDS));
                             }
@@ -83,7 +83,7 @@ macro_rules! generate_extension {
                     where
                         A: serde::de::MapAccess<'de>,
                     {
-                        $(let mut $var: Option<$type> = None;)+
+                        $(let mut $var: Option<$type> = None;)*
                         while let Some(key) = serde::de::MapAccess::next_key::<Field>(&mut map)? {
                             match key {
                                 $(Field::$var => {
@@ -93,7 +93,7 @@ macro_rules! generate_extension {
                                         ));
                                     }
                                     $var = Some(serde::de::MapAccess::next_value::<$type>(&mut map)?);
-                                })+
+                                })*
                                 /*Field::Ignore => {
                                     let _ = serde::de::MapAccess::next_value::<serde::de::IgnoredAny>(&mut map)?;
                                 }*/
@@ -106,15 +106,15 @@ macro_rules! generate_extension {
                                     <$type as $crate::resource::ScimSchema>::SCHEMA,
                                 ));
                             }
-                        };)+
+                        };)*
 
-                        Ok(UserExtensions {
-                            $($var),+
+                        Ok($name {
+                            $($var),*
                         })
                     }
                 }
                 const FIELDS: &'static [&'static str] = &[
-                    $(<$type as $crate::resource::ScimSchema>::SCHEMA),+
+                    $(<$type as $crate::resource::ScimSchema>::SCHEMA),*
                 ];
                 serde::Deserializer::deserialize_struct(deserializer, stringify!($name), FIELDS, Visitor)
             }
@@ -125,6 +125,7 @@ macro_rules! generate_extension {
             where
                 S: serde::Serializer,
             {
+                #[allow(unused_mut)]
                 let mut state = serde::Serializer::serialize_struct(
                     serializer,
                     stringify!($name),
@@ -134,7 +135,7 @@ macro_rules! generate_extension {
                     &mut state,
                     <$type as $crate::resource::ScimSchema>::SCHEMA,
                     &self.$var,
-                )?;)+
+                )?;)*
                 serde::ser::SerializeStruct::end(state)
             }
         }

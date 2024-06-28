@@ -18,5 +18,9 @@ thiserror = "1.0.43"
 pretty_assertions = "1.4.0"
 tokio = { version = "1", features = ["rt", "macros"] }
 
+[features]
+default = []
+test-directory-scimple = []
+
 [lints]
 workspace = true

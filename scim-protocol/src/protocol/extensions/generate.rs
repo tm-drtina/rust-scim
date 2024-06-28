@@ -99,13 +99,10 @@ macro_rules! generate_extension {
                                 }*/
                             }
                         }
-                        $(let $var = match $var {
-                            Some(field) => field,
-                            None => {
-                                return Err(<A::Error as serde::de::Error>::missing_field(
-                                    <$type as $crate::resource::ScimSchema>::SCHEMA,
-                                ));
-                            }
+                        $(let Some($var) = $var else {
+                            return Err(<A::Error as serde::de::Error>::missing_field(
+                                <$type as $crate::resource::ScimSchema>::SCHEMA,
+                            ));
                         };)*
 
                         Ok($name {

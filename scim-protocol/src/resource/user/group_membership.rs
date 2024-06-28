@@ -31,7 +31,7 @@ pub struct GroupMembership {
     /// The reference URI of a target resource, if the attribute is a reference.
     /// URIs are canonicalized per Section 6.2 of [RFC3986].
     /// While the representation of a resource may vary in different SCIM protocol API versions (see Section 3.13 of [RFC7644]), URIs for SCIM resources with an API version SHALL be considered comparable to URIs without a version or with a different version.
-    /// For example, "https://example.com/Users/12345" is equivalent to "https://example.com/v2/Users/12345".
+    /// For example, "<https://example.com/Users/12345>" is equivalent to "<https://example.com/v2/Users/12345>".
     #[serde(rename = "$ref", default)]
     pub reference: Option<String>,
 }

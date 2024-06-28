@@ -40,12 +40,13 @@ pub trait ScimResponse {
     fn external_id(&self) -> Option<&str>;
     fn meta(&self) -> &Meta;
 
+    #[must_use]
     fn defined_schemas() -> impl Iterator<Item = &'static str> {
         once(<Self::Resource as ScimSchema>::SCHEMA)
             .chain(<Self::Extensions as Extensions>::SCHEMA.iter().copied())
     }
 
-    fn validate_schema<'a>(&'a self) -> Result<(), SchemaMismatch<'a>> {
+    fn validate_schema(&self) -> Result<(), SchemaMismatch<'_>> {
         let actual_schemas: BTreeSet<&str> = self.schemas().iter().map(String::as_str).collect();
         let expected_schemas: BTreeSet<&str> = Self::defined_schemas().collect();
         if actual_schemas == expected_schemas {

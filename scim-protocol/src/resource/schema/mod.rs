@@ -12,4 +12,4 @@ pub use schema_attribute_returned::SchemaAttributeReturned;
 pub use schema_attribute_type::SchemaAttributeType;
 pub use schema_attribute_uniqueness::SchemaAttributeUniqueness;
 
-pub const ENDPOINT: &'static str = "/Schemas";
+pub const ENDPOINT: &str = "/Schemas";

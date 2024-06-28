@@ -64,7 +64,7 @@ pub struct User {
     /// See [RFC5646] for further information.
     pub locale: Option<String>,
 
-    /// The User's time zone, in IANA Time Zone database format [RFC6557], also known as the "Olson" time zone database format [Olson-TZ] (e.g., "America/Los_Angeles").
+    /// The User's time zone, in IANA Time Zone database format [RFC6557], also known as the "Olson" time zone database format [Olson-TZ] (e.g., "`America/Los_Angeles`").
     pub timezone: Option<String>,
 
     /// A Boolean value indicating the user's administrative status.

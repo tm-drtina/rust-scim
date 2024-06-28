@@ -4,6 +4,7 @@ use std::fmt::{self, Display};
 use serde::ser::{self, Impossible, SerializeMap};
 use serde::{Serialize, Serializer};
 
+#[derive(Clone, Copy)]
 enum Unsupported {
     Boolean,
     Integer,
@@ -53,7 +54,7 @@ where
     M: SerializeMap + 'a,
 {
     fn bad_type(what: Unsupported) -> M::Error {
-        ser::Error::custom(format_args!("can only flatten structs (got {})", what))
+        ser::Error::custom(format!("can only flatten structs (got {what})"))
     }
 }
 

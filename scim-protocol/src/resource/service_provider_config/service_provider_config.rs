@@ -12,7 +12,7 @@ use super::{
 #[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ServiceProviderConfig {
-    /// Must be singleton list of ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"]
+    /// Must be singleton list of `["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"]`
     // TODO: verify in requests
     pub schemas: Vec<String>,
 
@@ -43,7 +43,7 @@ pub struct ServiceProviderConfig {
     /// REQUIRED.
     pub sort: SortConfig,
 
-    /// A complex type that specifies ETag configuration options.
+    /// A complex type that specifies `ETag` configuration options.
     /// REQUIRED.
     pub etag: ETagConfig,
 

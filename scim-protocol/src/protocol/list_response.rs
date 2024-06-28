@@ -3,7 +3,7 @@ use serde::Deserialize;
 #[derive(Debug, Clone, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct ListResponse<T> {
-    /// Must be singleton list of ["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
+    /// Must be singleton list of `["urn:ietf:params:scim:api:messages:2.0:ListResponse"]`
     // TODO: verify in requests
     #[allow(unused)]
     schemas: Vec<String>,

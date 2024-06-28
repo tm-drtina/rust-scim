@@ -19,6 +19,7 @@ pub struct ScimConfig {
 }
 
 impl ScimClient {
+    #[must_use]
     pub fn new(config: ScimConfig, http_client: Client) -> Self {
         Self {
             config,

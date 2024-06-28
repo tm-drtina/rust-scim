@@ -32,7 +32,7 @@ impl<'de> Deserialize<'de> for NoExtensions {
             where
                 A: serde::de::MapAccess<'de>,
             {
-                if let Some(_) = map.next_entry::<Value, Value>()? {
+                if map.next_entry::<Value, Value>()?.is_some() {
                     Err(serde::de::Error::custom(
                         "Unexpected data, NoExtenstions struct has no data",
                     ))

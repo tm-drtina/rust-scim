@@ -60,17 +60,14 @@ macro_rules! generate_response_deserialize {
                             }
                         }
 
-                        let schemas = match schemas {
-                            Some(s) => s,
-                            None => return Err(serde::de::Error::missing_field("schemas")),
+                        let Some(schemas) = schemas else {
+                            return Err(serde::de::Error::missing_field("schemas"));
                         };
-                        let id = match id {
-                            Some(id) => id,
-                            None => return Err(serde::de::Error::missing_field("id")),
+                        let Some(id) = id else {
+                            return Err(serde::de::Error::missing_field("id"));
                         };
-                        let meta = match meta {
-                            Some(s) => s,
-                            None => return Err(serde::de::Error::missing_field("meta")),
+                        let Some(meta) = meta else {
+                            return Err(serde::de::Error::missing_field("meta"));
                         };
 
                         let resource = match <<Self::Value as $crate::protocol::ScimResponse>::Resource as serde::Deserialize>::deserialize(

@@ -16,4 +16,4 @@ pub use patch_config::PatchConfig;
 pub use service_provider_config::ServiceProviderConfig;
 pub use sort_config::SortConfig;
 
-pub const ENDPOINT: &'static str = "/ServiceProviderConfig";
+pub const ENDPOINT: &str = "/ServiceProviderConfig";

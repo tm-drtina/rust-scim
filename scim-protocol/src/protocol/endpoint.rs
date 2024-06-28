@@ -12,10 +12,12 @@ pub trait ScimEndpoint {
     type Request: ScimRequest<Resource = Self::Resource, Extensions = Self::Extensions>;
     type Response: ScimResponse<Resource = Self::Resource, Extensions = Self::Extensions>;
 
+    #[must_use]
     fn resource_uri(base_url: &str) -> String {
         format!("{}{}", base_url, Self::ENDPOINT)
     }
 
+    #[must_use]
     fn single_resource_uri(base_url: &str, id: &str) -> String {
         format!("{}/{}", Self::resource_uri(base_url), id)
     }

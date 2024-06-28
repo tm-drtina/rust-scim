@@ -1,8 +1,7 @@
-use crate::generate_endpoint;
-use crate::protocol::{Extensions, NoExtensions};
+use crate::protocol::NoExtensions;
 use crate::resource::enterprise_user::EnterpriseUser;
 use crate::resource::user::User;
-use crate::resource::ScimSchema;
+use crate::{generate_endpoint, generate_extension};
 
 generate_endpoint!(
     path = "/Users",
@@ -22,12 +21,8 @@ generate_endpoint!(
     extensions = EnterpriseUserExtensions,
 );
 
-// TODO: generate even this
-#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
-pub struct EnterpriseUserExtensions {
-    #[serde(rename = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")]
-    pub enterprise_user: EnterpriseUser,
-}
-impl Extensions for EnterpriseUserExtensions {
-    const SCHEMA: &'static [&'static str] = &[EnterpriseUser::SCHEMA];
-}
+generate_extension!(
+    extension EnterpriseUserExtensions {
+        enterprise_user: EnterpriseUser,
+    }
+);

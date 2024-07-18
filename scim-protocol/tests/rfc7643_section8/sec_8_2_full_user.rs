@@ -21,7 +21,7 @@ fn test_response() {
         external_id: Some("701984".to_string()),
         meta: meta(id),
         resource: user(),
-        extensions: NoExtensions,
+        extensions: NoExtensions {},
     };
     assert_eq!(expected, actual);
 }

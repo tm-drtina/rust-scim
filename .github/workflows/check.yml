@@ -96,7 +96,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # https://github.com/rust-lang/rust/issues/91611
-      msrv: "1.75.0"
+      msrv: "1.85.0"
     name: MSRV / check
     steps:
       - uses: actions/checkout@v4

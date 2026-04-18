@@ -1,10 +1,10 @@
 [package]
 name = "scim-protocol"
-edition = "2021"
 
 version.workspace = true
 authors.workspace = true
 rust-version.workspace = true
+edition.workspace = true
 
 [dependencies]
 paste = "1.0.15"

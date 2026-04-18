@@ -1,6 +1,6 @@
+use scim_protocol::resource::ScimSchema;
 use scim_protocol::resource::enterprise_user::EnterpriseUser;
 use scim_protocol::resource::user::User;
-use scim_protocol::resource::ScimSchema;
 use scim_protocol::{generate_endpoint, generate_extension};
 
 generate_endpoint!(

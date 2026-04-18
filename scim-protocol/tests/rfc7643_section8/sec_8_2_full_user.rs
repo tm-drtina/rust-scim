@@ -1,10 +1,10 @@
 use scim_protocol::endpoint::{UserResponse, UsersEndpoint};
 use scim_protocol::protocol::{Meta, NoExtensions, ScimEndpoint};
+use scim_protocol::resource::ScimSchema;
 use scim_protocol::resource::user::{
     Address, Email, GroupMembership, InstantMessaging, Name, PhoneNumber, Photo, User,
     X509Certificate,
 };
-use scim_protocol::resource::ScimSchema;
 
 #[cfg(test)]
 use pretty_assertions::assert_eq;

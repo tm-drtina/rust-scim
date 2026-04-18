@@ -8,7 +8,8 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 authors = ["Tomas Drtina <tm.drtina@gmail.com>"]
-rust-version = "1.75"
+rust-version = "1.86"
+edition = "2024"
 
 [workspace.lints.clippy]
 pedantic = { level = "warn", priority = -1 }

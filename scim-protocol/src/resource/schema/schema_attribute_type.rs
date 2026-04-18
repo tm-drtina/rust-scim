@@ -6,8 +6,9 @@ use crate::resource::schema::SchemaAttribute;
 ///
 /// Note: RFC is missing binary type, but uses it in examples.
 /// See: <https://www.rfc-editor.org/errata/eid5606>
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
 pub enum SchemaAttributeType {
+    #[default]
     String,
     Boolean,
     Decimal,
@@ -30,9 +31,4 @@ pub enum SchemaAttributeType {
         sub_attributes: Vec<SchemaAttribute>,
     },
     Binary,
-}
-impl Default for SchemaAttributeType {
-    fn default() -> Self {
-        Self::String
-    }
 }

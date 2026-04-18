@@ -82,7 +82,7 @@ pub struct User {
     ///   *  Validate the value against server password policy.
     ///      Note: The definition and enforcement of password policy are beyond the scope of this document.
     ///
-    ///   *  Ensure that the value is encrypted (e.g., hashed).  
+    ///   *  Ensure that the value is encrypted (e.g., hashed).
     ///      See Section 9.2 for acceptable hashing and encryption handling when storing or persisting for provisioning workflow reasons.
     ///
     /// A service provider that immediately passes the cleartext value on to another system or programming interface MUST pass the value directly over a secured connection (e.g., Transport Layer Security(TLS)).

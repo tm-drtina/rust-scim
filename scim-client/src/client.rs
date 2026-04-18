@@ -3,8 +3,8 @@ use scim_protocol::protocol::{ListResponse, ScimEndpoint, ScimResponse as _};
 use scim_protocol::resource::resource_type::{self, ResourceType};
 use scim_protocol::resource::schema::{self, Schema};
 use scim_protocol::resource::service_provider_config::{self, ServiceProviderConfig};
-use serde::de::DeserializeOwned;
 use serde::Serialize;
+use serde::de::DeserializeOwned;
 
 use crate::error::{Result, ScimError};
 

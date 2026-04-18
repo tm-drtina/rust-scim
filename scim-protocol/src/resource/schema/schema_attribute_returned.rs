@@ -1,5 +1,5 @@
 /// A single keyword that indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.
-#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize)]
+#[derive(Debug, Default, Clone, PartialEq, Eq, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub enum SchemaAttributeReturned {
     /// The attribute is always returned, regardless of the contents of the "attributes" parameter.
@@ -14,14 +14,10 @@ pub enum SchemaAttributeReturned {
     /// The attribute is returned by default in all SCIM operation responses where attribute values are returned.
     /// If the GET request "attributes" parameter is specified, attribute values are only returned if the attribute is named in the "attributes" parameter.
     /// DEFAULT.
+    #[default]
     Default,
 
     /// The attribute is returned in response to any PUT, POST, or PATCH operations if the attribute was specified by the client (for example, the attribute was modified).
     /// The attribute is returned in a SCIM query operation only if specified in the "attributes" parameter.
     Request,
-}
-impl Default for SchemaAttributeReturned {
-    fn default() -> Self {
-        Self::Default
-    }
 }
